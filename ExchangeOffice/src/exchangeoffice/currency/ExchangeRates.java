@@ -66,11 +66,11 @@ public class ExchangeRates {
 			 * that they are indeed the same
 			 */
 			if(other.getDate().equals(this.getDate()) &&
-					other.getMiddleRate() == this.getMiddleRate()){
-					return true;
-					}
-					}
-		return false;
+				other.getMiddleRate() == this.getMiddleRate()){
+				return true;
+			}
 		}
+	return false;
+	}
 }
 	
