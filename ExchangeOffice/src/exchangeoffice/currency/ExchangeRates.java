@@ -40,4 +40,37 @@ public class ExchangeRates {
 	public void setMiddleRate(double middleRate) {
 		this.middleRate = middleRate;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		long temp;
+		temp = Double.doubleToLongBits(buyRate);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((date == null) ? 0 : date.hashCode());
+		temp = Double.doubleToLongBits(middleRate);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(sellRate);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null)
+			return false;
+		if (obj instanceof ExchangeRates){
+			ExchangeRates other = (ExchangeRates) obj;
+			/*
+			 * assuming that it is enough to check only
+			 * middle rate and date of rates to prove 
+			 * that they are indeed the same
+			 */
+			if(other.getDate().equals(this.getDate()) &&
+					other.getMiddleRate() == this.getMiddleRate()){
+					return true;
+					}
+					}
+		return false;
+		}
 }
+	

@@ -32,4 +32,27 @@ public class Currency {
 	public void setListOfRates(LinkedList<ExchangeRates> listOfRates) {
 		this.listOfRates = listOfRates;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((listOfRates == null) ? 0 : listOfRates.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((shortName == null) ? 0 : shortName.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null)
+			return false;
+		if(obj instanceof Currency){
+			Currency other = (Currency) obj;
+			if(other.getName().equals(this.getName())){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
 }
