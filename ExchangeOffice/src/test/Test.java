@@ -11,7 +11,7 @@ public class Test implements EOInterface {
 	@Override
 	public void addEROnDay(Currency cur, ExchangeRates er) {
 		if(cur == null || er == null){
-			return;
+			throw new RuntimeException("Error! Not a valid entry.");
 		}
 		cur.getListOfRates().add(er);
 	}
