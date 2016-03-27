@@ -10,6 +10,10 @@ public class Test implements EOInterface {
 
 	@Override
 	public void addEROnDay(Currency cur, ExchangeRates er) {
+		if(cur == null || er == null){
+			return;
+		}
+		cur.getListOfRates().add(er);
 	}
 
 	@Override
