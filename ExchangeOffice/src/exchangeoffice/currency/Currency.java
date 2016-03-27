@@ -10,6 +10,10 @@ public class Currency {
 	public Currency() {
 	}
 	public Currency(String name, String shortName, LinkedList<ExchangeRates> listOfRates) {
+		if(name == null || name.isEmpty() || shortName == null || shortName.isEmpty() || 
+				listOfRates == null){
+			throw new RuntimeException("Error! Please make corrections to the fields you entered.");
+		}
 		this.name = name;
 		this.shortName = shortName;
 		this.listOfRates = listOfRates;
@@ -18,18 +22,28 @@ public class Currency {
 		return name;
 	}
 	public void setName(String name) {
+		if(name == null || name.isEmpty()){
+			throw new RuntimeException("Error! Please write correct name.");
+		}
 		this.name = name;
 	}
 	public String getShortName() {
 		return shortName;
 	}
 	public void setShortName(String shortName) {
+		if(shortName == null || shortName.isEmpty()){
+			throw new RuntimeException("Error! Please write correct short name of the currency.");
+		}
 		this.shortName = shortName;
 	}
+	
 	public LinkedList<ExchangeRates> getListOfRates() {
 		return listOfRates;
 	}
 	public void setListOfRates(LinkedList<ExchangeRates> listOfRates) {
+		if(listOfRates == null){
+			throw new RuntimeException("Error! The list is not valid.");
+		}
 		this.listOfRates = listOfRates;
 	}
 	@Override

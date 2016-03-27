@@ -4,21 +4,29 @@ import java.util.LinkedList;
 import exchangeoffice.currency.Currency;
 
 public class ExchangeOffice {
-	private String Name;
+	private String eoName;
 	private LinkedList<Currency> list;
+	
 	public ExchangeOffice() {
 	}
 
-	public ExchangeOffice(LinkedList<Currency> list) {
+	public ExchangeOffice(String eoName, LinkedList<Currency> list) {
+		if(eoName == null || eoName.isEmpty() || list == null){
+			throw new RuntimeException("Error! Please make corrections to the fields you entered.");
+		}
+		this.eoName = eoName;
 		this.list = list;
 	}
 
 	public String getName() {
-		return Name;
+		return eoName;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		if(name == null || name.isEmpty()){
+			throw new RuntimeException("Error! Please write correct name.");
+		}
+		this.eoName = name;
 	}
 
 	public LinkedList<Currency> getList() {
@@ -26,6 +34,9 @@ public class ExchangeOffice {
 	}
 
 	public void setList(LinkedList<Currency> list) {
+		if(list == null){
+			throw new RuntimeException("Error! The list is not valid.");
+		}
 		this.list = list;
 	}
 
@@ -33,7 +44,7 @@ public class ExchangeOffice {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Name == null) ? 0 : Name.hashCode());
+		result = prime * result + ((eoName == null) ? 0 : eoName.hashCode());
 		result = prime * result + ((list == null) ? 0 : list.hashCode());
 		return result;
 	}
@@ -53,7 +64,7 @@ public class ExchangeOffice {
 
 	@Override
 	public String toString() {
-		return "ExchangeOffice [Name of the office:" + Name;
+		return "ExchangeOffice [Name of the office:" + eoName;
 	}
 
 }
